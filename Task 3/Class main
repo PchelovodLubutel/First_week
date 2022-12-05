@@ -1,0 +1,9 @@
+public class Main {
+    public static void main(String[] args) {
+        Aircraft aircraft = new Aircraft("Ан-2, 2-е название - кукурузник ");
+        aircraft.setEngine(new Engine("Двигатель:  1 поршневой винтовой двигатель АШ-62ИР мощностью 1000 л.с. " ));
+        aircraft.setWing(new Wing("Крыло: из полимерных композитных материалов, размах 36 м "));
+        aircraft.setChassis(new Chassis("Шасси: среднестатистические"));
+        System.out.println(aircraft.getInfo());
+    }
+}
