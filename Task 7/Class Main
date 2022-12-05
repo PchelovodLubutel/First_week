@@ -1,0 +1,24 @@
+public class Main {
+    public static void main(String[] args) throws IOException{
+        JFrame frame = buildFrame();
+
+        final BufferedImage image = ImageIO.read(new File("C:\\Users\\Student\\Pictures\\Clock.png"));
+
+        JPanel pane = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 50, 50, null);
+            }
+        };
+        frame.add(pane);
+    }
+
+    private static JFrame buildFrame() {
+        JFrame frame = new JFrame("Часы");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
+        return frame;
+    }
+}
