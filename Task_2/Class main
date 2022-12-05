@@ -1,0 +1,72 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("3 Patient");
+
+        Patient[] patients_list = patients_list();     // ручное заполнение
+        //Patient[] patients_list = pat();          // автозаполнение
+        System.out.print("----------а)Введите диагноз для поиска пациентов: ");
+        String diagnosis= scanner.next();
+        check_diagnosis(patients_list,diagnosis);
+        System.out.println("----------b)Введите диапазон для поиска по номеру медицинской карты");
+        System.out.print("От ");
+        int a = scanner.nextInt();
+        System.out.print("До ");
+        int b = scanner.nextInt();
+        check_med_card(patients_list,a,b);
+    }
+
+    static Patient[] patients_list(){
+
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.print("Введите количество пациентов: ");
+        Patient[] patients = new Patient[scanner1.nextInt()];
+        for (int i=0; i<patients.length; i++) {
+            patients[i]=new Patient();
+            System.out.println();
+            System.out.print("Введите id: ");
+            patients[i].setId(scanner1.nextInt());
+            System.out.print("Введите фамилию: ");
+            patients[i].setSurname(scanner1.next());
+            System.out.print("Введите имя: ");
+            patients[i].setName(scanner1.next());
+            System.out.print("Введите отчество: ");
+            patients[i].setMiddle_name(scanner1.next());
+            System.out.print("Введите адрес: ");
+            patients[i].setAddress(scanner1.next());
+            System.out.print("Введите номер телефона: ");
+            patients[i].setPhone_number(scanner1.next());
+            System.out.print("Введите номер медицинской карты: ");
+            patients[i].setMed_card(scanner1.nextInt());
+            System.out.print("Введите диагноз: ");
+            patients[i].setDiagnosis(scanner1.next());
+        }
+        return patients;
+    }
+    static Patient[] pat(){
+        Patient[] mass= new Patient[3];
+        mass[0]= new Patient(0,"Малика","Арипджанова","Талатовна","Себярякова 23","5465456465",1116,"Простуда");
+        mass[1]= new Patient(1,"Евгений","Иванович","Мидлов","Салтыкова 12","23456456456",1117,"Воспаление");
+        mass[2]= new Patient(2,"Дмитрий","Григорьевич","Кальмаров","Сумская 2","0995421302",1118,"Простуда");
+        return mass;
+    }
+
+    static void check_diagnosis(Patient[] patients,String diagnosis){
+        for(Patient patient:patients){
+            if(patient.getDiagnosis().equals(diagnosis)){
+                System.out.println(patient.toString());
+            }
+        }
+        System.out.println();}
+    static void check_med_card(Patient[] patients,int a, int b){
+        for(Patient patient:patients){
+            if(patient.getMed_card()>=a && patient.getMed_card()<=b){
+                System.out.println(patient.toString());
+            }
+        }
+    }
