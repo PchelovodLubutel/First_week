@@ -1,0 +1,51 @@
+package bank;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class Bank {
+
+    public static void main(String[] args) {
+   
+        Account account = new Account();
+        
+        try{
+            account.newTransaction(Account.typeTransaction.RECEIPT, 2000);            
+        } catch (UnsupportedOperationException | 
+                 IllegalArgumentException | 
+                 LowBalanceException e){
+            e.printStackTrace();
+        }
+        
+
+        try{
+            account.newTransaction(Account.typeTransaction.PAYMENT, -100);            
+        } catch (UnsupportedOperationException | 
+                 IllegalArgumentException | 
+                 LowBalanceException e){
+            e.printStackTrace();
+        }
+         
+        try{
+            account.newTransaction(Account.typeTransaction.WITHDRAWAL, 1500);            
+        } catch (UnsupportedOperationException | 
+                 IllegalArgumentException | 
+                 LowBalanceException e){
+            e.printStackTrace();
+        }
+        
+
+        try{
+            account.newTransaction(Account.typeTransaction.WITHDRAWAL, 1500);            
+        } catch (UnsupportedOperationException | 
+                 IllegalArgumentException | 
+                 LowBalanceException e){
+            e.printStackTrace();
+        }
+
+        System.out.println(account.print());
+
+    }
+    
+}
